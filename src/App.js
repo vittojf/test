@@ -18,7 +18,7 @@ function App() {
     </div>
 </Route>
 
-<Route exact path="/pag/2">
+<Route exact path="/pag2">
     <div className="container">      
       <ItemListContainer2></ItemListContainer2>
     </div>
