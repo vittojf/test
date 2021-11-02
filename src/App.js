@@ -1,30 +1,36 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
 
+} from "react-router-dom";
 import './App.css';
 import HeaderNav from './components/HeaderNav/HeaderNav';
 import ItemListContainer from './components/ItemListContainer/itemListContainer'
-import ItemListContainer2 from './components/ItemListContainer/itemListContainer2'
+
 
 function App() {
   return (<>
-<BrowserRouter>
+<Router>
+
     <HeaderNav></HeaderNav>
 <Switch>
 
   
-<Route path="/">
+<Route exact path="/">
     <div className="container">      
       <ItemListContainer></ItemListContainer>
     </div>
 </Route>
 
-<Route exact path="/pag/2">
+<Route  path="/:ap" >
     <div className="container">      
-      <ItemListContainer2></ItemListContainer2>
+      <ItemListContainer></ItemListContainer>
     </div>
 </Route>
 </Switch>
-</BrowserRouter>
+
+</Router>
     </>
   );
 }

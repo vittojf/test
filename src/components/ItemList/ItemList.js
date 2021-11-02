@@ -3,7 +3,7 @@ import React from 'react';
 
 
 export default function ItemList({result}){
-    console.log(result.map(e=>e))
+    
     
 
     return(<>
