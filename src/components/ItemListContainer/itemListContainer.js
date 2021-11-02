@@ -3,12 +3,13 @@ import SpinnerLoad from "../SpinnerLoad/SpinnerLoad";
 import ItemList from "../ItemList/ItemList";
 import TableView from "../TableView/TableView";
 
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ItemListContainer() {
-  const { ap } = useParams();
+  
   const [loading, setLoading] = useState(false);
   const [item, setItem] = useState([]);
+  const [nPoint, setNPoint] = useState(1);
 
   function getData(url) {
     setLoading(false);
@@ -18,6 +19,7 @@ export default function ItemListContainer() {
         (data) => {
           setItem(data);
           setLoading(true);
+          console.log(data)
         },
         (error) => {
           setItem([]);
@@ -27,17 +29,15 @@ export default function ItemListContainer() {
       );
   }
 
+
+const addPoint =()=>{
+    setNPoint(nPoint+1)
+}
   useEffect(() => {
-    if (ap === "2") {
-      getData(
-        "http://bloomcker.com:5757/api/kardcloud/mantenimiento/filtro/%7B%7D/2"
-      );
-    } else {
-      getData(
-        "http://bloomcker.com:5757/api/kardcloud/mantenimiento/filtro/%7B%7D/1"
-      );
-    }
-  }, [ap]);
+  
+      getData(  `http://bloomcker.com:5757/api/kardcloud/mantenimiento/filtro/%7B%7D/${nPoint}`  );
+   
+  }, [nPoint]);
 
   return (
     <React.Fragment>
@@ -53,8 +53,7 @@ export default function ItemListContainer() {
         )}
       </TableView>
 
-      {ap==2?<Link className="btn btn-primary" to="/">Atras</Link> :<Link to="/2" className="btn btn-primary">Siguiente</Link>
-      }
+      <Link to={`/${nPoint+1}`} onClick={addPoint} className="btn btn-primary" >siguiente</Link> 
     </React.Fragment>
   );
 }

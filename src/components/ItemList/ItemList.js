@@ -22,6 +22,8 @@ export default function ItemList({result}){
             <td >{res.indicacion}</td>
             <td >{res.nroExp}</td>
             <td >{res.reqDigitacion}</td>
+            
+           
         </tr>
       ))
     }

@@ -13,6 +13,7 @@ const TableView =({children})=>{
         <th>Indicacion</th>
         <th>Numero de Expiracion</th>
         <th>Requerimientos de Digitación</th>
+        
       </tr>
     </thead>
     <tbody>
